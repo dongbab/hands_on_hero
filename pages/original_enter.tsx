@@ -72,7 +72,7 @@ const Enter: NextPage = () => {
                 name="email"
                 label="Eamil address"
                 type="email"
-                //className="w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-blue-500"
+                className="w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-blue-500"
                 required
               />
             ) : null}
@@ -83,7 +83,7 @@ const Enter: NextPage = () => {
                   label="Phone number"
                   type="number"
                   kind="phone"
-                  //className="w-full appearance-none rounded-md rounded-l-none border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-blue-500"
+                  className="w-full appearance-none rounded-md rounded-l-none border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-blue-500"
                   required
                 />
             ) : null}

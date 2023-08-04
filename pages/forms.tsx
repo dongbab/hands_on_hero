@@ -1,9 +1,5 @@
 import { FieldErrors, useForm } from "react-hook-form";
 
-// Better validation
-// Better Erros (set, clear, display)
-// Have control over inputs
-
 interface LoginForm {
   username: string;
   password: string;
@@ -12,16 +8,17 @@ interface LoginForm {
 }
 
 export default function Forms() {
-  const { register, 
-    handleSubmit, 
-    formState:{errors},
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
     watch,
     setError,
     setValue,
     reset,
-   } = useForm<LoginForm>({
+  } = useForm<LoginForm>({
     mode: "onChange",
-   });
+  });
   const onValid = (data: LoginForm) => {
     console.log("im valid bby");
     reset();
@@ -29,36 +26,45 @@ export default function Forms() {
   const onInValid = (errors: FieldErrors) => {
     console.log(errors);
   };
+
   return (
     <form onSubmit={handleSubmit(onValid, onInValid)}>
       <input
         {...register("username", {
-          required: "Username is required",
+          required: "이름을 입력해주세요.",
           minLength: {
-            message: "The username should be longer than 5 cahrs.",
-            value:5,
-          }
+            message: "The username should be longer than 5 chars.",
+            value: 5,
+          },
         })}
         type="text"
-        placeholder="Username"
+        placeholder="이름"
       />
       {errors.username?.message}
       <input
-        {...register("email", { 
-          required: "Email is required",
+        {...register("email", {
+          required: "이메일을 입력해주세요.",
           validate: {
-              notGmail: (value) => !value.includes("@gmail.com") || "Gmail is not allowed",
+            notGmail: (value) =>
+              !value.includes("@gmail.com") || "Gmail is not allowed",
           },
         })}
         type="email"
-        placeholder="Email"
-        className={`${Boolean(errors.email) ? "border-red-500" : ""}`}
+        placeholder="이메일"
+        // className={`${Boolean(errors.email) ? "border-red-500" : ""}`}
       />
       {errors.email?.message}
       <input
-        {...register("password", { required: "Password is required" })}
+        {...register("password", {
+          required: "비밀번호를 입력해주세요.",
+          minLength: {
+            message: "비밀번호는 8자 이상이어야 합니다.",
+            value: 8,
+          },
+        })}
         type="password"
-        placeholder="Password"
+        placeholder="비밀번호"
+        // className={`${Boolean(errors.email) ? "border-red-500" : ""}`}
       />
       <input type="submit" value="Create Account" />
       {errors.errors?.message}

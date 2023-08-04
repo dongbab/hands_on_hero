@@ -91,7 +91,7 @@ export default function Input({
             {...register}
             minLength={8}
             maxLength={16}
-            type={type}
+            type="password"
             className="w-full appearance-none rounded-md rounded-l-none border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-blue-500"
           />
         </div>
